@@ -1,7 +1,7 @@
-# Set the block ID here. 
+# Set the block ID to monitor. Default is diamond ore (56).
 mined_block_id: 56
 
-# Set the announcements here.
+# Customizable announcements. You can add more messages or modify existing ones.
 announcements:
   - "&a{player} mined {amount} specified blocks!"
   - "&cWow, {player} found {amount} treasures by mining!"
