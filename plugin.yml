@@ -1,0 +1,6 @@
+name: BlockAnnouncerPlus
+version: 1.0.0
+api: 4.0.0
+main: Terpz710\BlockAnnouncerPlus\Main
+author: Terpz710
+description: A PocketMine-MP plugin to announce when a player mines a specified block.
