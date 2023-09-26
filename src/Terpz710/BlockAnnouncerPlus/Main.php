@@ -7,12 +7,13 @@ use pocketmine\event\Listener;
 use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\utils\Config;
 use pocketmine\player\Player;
+use pocketmine\block\Block;
 
 class Main extends PluginBase implements Listener {
 
     public function onEnable(): void {
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
-        $this->saveResource("config.yml", false);
+        $this->saveResource("config.yml");
     }
 
     public function onBlockBreak(BlockBreakEvent $event) {
@@ -22,7 +23,7 @@ class Main extends PluginBase implements Listener {
         $config = new Config($this->getDataFolder() . "config.yml", Config::YAML);
         $minedBlockId = $config->get("mined_block_id");
 
-        if ($block->getWorld()->getBlockIdAt($block->x, $block->y, $block->z) === $minedBlockId) {
+        if ($block->getId() === $minedBlockId) {
             $this->announceMinedBlock($player);
         }
     }
