@@ -23,7 +23,7 @@ class Main extends PluginBase implements Listener {
         $config = new Config($this->getDataFolder() . "config.yml", Config::YAML);
         $minedBlockId = $config->get("mined_block_id");
 
-        if ($block->getId() === $minedBlockId) {
+        if ($block->getTypeId() === $minedBlockId) {
             $this->announceMinedBlock($player);
         }
     }
