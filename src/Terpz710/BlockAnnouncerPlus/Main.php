@@ -12,8 +12,7 @@ class Main extends PluginBase implements Listener {
 
     public function onEnable(): void {
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
-
-        $this->saveResource("config.yml");
+        $this->saveResource("config.yml", false);
     }
 
     public function onBlockBreak(BlockBreakEvent $event) {
@@ -23,7 +22,7 @@ class Main extends PluginBase implements Listener {
         $config = new Config($this->getDataFolder() . "config.yml", Config::YAML);
         $minedBlockId = $config->get("mined_block_id");
 
-        if ($block->getId() === $minedBlockId) {
+        if ($block->getWorld()->getBlockIdAt($block->x, $block->y, $block->z) === $minedBlockId) {
             $this->announceMinedBlock($player);
         }
     }
